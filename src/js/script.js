@@ -1,9 +1,9 @@
 $(document).ready(function(){
     $('.carousel__inner').slick({
-        speed: 300,
+        speed: 1200,
         // adaptiveHeight: true,
-        prevArrow: '<button type="button" class="slick-prev"><img src="/icons/left.png"></button>',
-        nextArrow: '<button type="button" class="slick-next"><img src="/icons/right.png"></button>',
+        prevArrow: '<button type="button" class="slick-prev"><img src="icons/left.svg"></button>',
+        nextArrow: '<button type="button" class="slick-next"><img src="icons/right.svg"></button>',
         responsive: [
             {
                 breakpoint: 992,
@@ -121,4 +121,25 @@ $(document).ready(function(){
         });
         return false;
     });
+
+
+    // Smoth scroll
+
+    $(window).scroll(function() {
+        if ($(this).scrollTop() > 1500) {
+            $('.pageup').fadeIn();
+        } else {
+            $('.pageup').fadeOut ();
+        }
+
+    });
+
+    $("a[href=#up]").click(function(){
+        const _href = $(this).attr("href");
+        $("html, body").animate({scrollTop: $(_href).offset().top+"px"});
+        return false;
+    });
+
+    new WOW().init();
+    
 });
